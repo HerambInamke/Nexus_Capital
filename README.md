@@ -1,9 +1,9 @@
-# MoneyMate
+# Nexus Capital
 
 ## Deployed Links
 
 ## Overview
-MoneyMate is a comprehensive personal finance management application designed to help users track expenses, manage budgets, set savings goals, and monitor accounts and debts. This project aims to promote financial awareness and effective money management.
+Nexus Capital is a comprehensive personal finance management application designed to help users track expenses, manage budgets, set savings goals, and monitor accounts and debts. This project aims to promote financial awareness and effective money management.
 
 ## Features
 
