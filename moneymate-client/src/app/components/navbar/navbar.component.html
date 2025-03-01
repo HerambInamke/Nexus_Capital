@@ -1,0 +1,61 @@
+<mat-toolbar color="primary" class="enhanced-navbar">
+    <div class="navbar-container">
+      <div class="logo-section">
+        <img src="/assets/logo.png" alt="AI Journal Logo" class="app-logo" onerror="this.style.display='none'">
+        <span class="app-title">MoneyMate</span>
+      </div>
+      
+      <span class="spacer"></span>
+      
+      <nav class="navigation">
+        <button mat-stroked-button 
+                routerLink="/dashboard" 
+                routerLinkActive="active-link"
+                matTooltip="Dashboard">
+          <mat-icon>dashboard</mat-icon>
+          Dashboard
+        </button>
+        
+        <button mat-stroked-button 
+                routerLink="/budget" 
+                routerLinkActive="active-link"
+                matTooltip="Budget">
+          <mat-icon>account_balance_wallet</mat-icon>
+          Budget
+        </button>
+        
+        <button mat-stroked-button 
+                routerLink="/savings" 
+                routerLinkActive="active-link"
+                matTooltip="Savings">
+          <mat-icon>savings</mat-icon>
+          Savings
+        </button>
+        
+        <button mat-stroked-button 
+                routerLink="/accounts" 
+                routerLinkActive="active-link"
+                matTooltip="Accounts">
+          <mat-icon>account_balance</mat-icon>
+          Accounts
+        </button>
+        
+        <button mat-stroked-button 
+                routerLink="/trends" 
+                routerLinkActive="active-link"
+                matTooltip="View Insights">
+          <mat-icon>insights</mat-icon>
+          Trends
+        </button>
+        
+        <button mat-raised-button
+                (click)="logout()" 
+                color="accent" 
+                routerLink="/login"
+                matTooltip="Logout">
+          <mat-icon>logout</mat-icon>
+          Logout
+        </button>
+      </nav>
+    </div>
+  </mat-toolbar>

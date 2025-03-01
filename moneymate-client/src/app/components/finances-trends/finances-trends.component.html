@@ -1,0 +1,48 @@
+<mat-card class="category-analysis-container">
+    <mat-card-header>
+      <mat-card-title>Spending Category Analysis</mat-card-title>
+    </mat-card-header>
+    
+    <mat-button-toggle-group class="interval-selector">
+      <mat-button-toggle value="month" (click)="updateAnalysis('month')">Month</mat-button-toggle>
+      <mat-button-toggle value="quarter" (click)="updateAnalysis('quarter')">Quarter</mat-button-toggle>
+      <mat-button-toggle value="year" (click)="updateAnalysis('year')">Year</mat-button-toggle>
+      <mat-button-toggle value="overall" (click)="updateAnalysis('overall')">Overall</mat-button-toggle>
+    </mat-button-toggle-group>
+
+    <div class="charts-container">
+      <mat-card class="chart-wrapper">
+        <mat-card-header>
+          <mat-card-title>Category Distribution</mat-card-title>
+        </mat-card-header>
+        <div class="chart-content">
+          <canvas #categoryDistributionChart></canvas>
+        </div>
+      </mat-card>
+
+      <mat-card class="chart-wrapper">
+        <mat-card-header>
+          <mat-card-title>Category Breakdown</mat-card-title>
+        </mat-card-header>
+        <div class="chart-content">
+          <div class="summary-grid">
+            <div *ngFor="let category of Object.keys(categoryDistribution)" class="summary-item">
+              <mat-icon>shopping_cart</mat-icon>
+              <span>
+                <b>{{ category }}</b>: 
+                ${{ categoryDistribution[category].toFixed(2) }} 
+                ({{ calculatePercentage(categoryDistribution[category]) }}%)
+              </span>
+            </div>
+          </div>
+          <div class="insights">
+            <p class="total-spending">Total Spending: ${{ totalSpending.toFixed(2) }}</p>
+            <p class="highest-category">
+              Highest Spending Category: 
+              <b>{{ getHighestSpendingCategory() }}</b>
+            </p>
+          </div>
+        </div>
+      </mat-card>
+    </div>
+  </mat-card>

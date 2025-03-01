@@ -1,0 +1,76 @@
+.enhanced-navbar {
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background-color:#59c563 !important;
+  }
+
+  .navbar-container {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 16px;
+  }
+
+  .logo-section {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .app-logo {
+    height: 40px;
+    width: 40px;
+    object-fit: contain;
+  }
+
+  .app-title {
+    font-weight: 500;
+    font-size: 1.2rem;
+  }
+
+  .spacer {
+    flex: 1 1 auto;
+  }
+
+  .navigation {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .navigation button {
+    text-transform: none;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .navigation .mat-icon {
+    margin-right: 4px;
+  }
+
+  .active-link {
+    background-color: rgba(255,255,255,0.2);
+  }
+
+  @media (max-width: 600px) {
+    .navbar-container {
+      flex-direction: column;
+      padding: 8px;
+    }
+
+    .navigation {
+      width: 100%;
+      flex-direction: column;
+      gap: 8px;
+      margin-top: 8px;
+    }
+
+    .navigation button {
+      width: 100%;
+    }
+  }
