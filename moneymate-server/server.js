@@ -29,7 +29,7 @@ app.use('/api/account', accountRoutes);
 
 // Root route
 app.get('/', (req, res) => {
-  res.send('Welcome to the MoneyMate API!');
+  res.send('Welcome to the Nexus_Capital API!');
 });
 
 // Connect to database and start server
