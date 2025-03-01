@@ -1,0 +1,125 @@
+<div class="accounts-container">
+  <div class="header-section">
+    <h1>Accounts & Debt Management</h1>
+    <button mat-stroked-button (click)="addAccount()" 
+            matTooltip="Add New Account">
+      <mat-icon>add_circle_outline</mat-icon>
+      New Account
+    </button>
+  </div>
+
+  <div class="summary-cards">
+    <mat-card class="summary-card">
+      <mat-card-content>
+        <div class="summary-title">Total Assets</div>
+        <div class="summary-amount positive">${{totalBalance | number:'1.2-2'}}</div>
+      </mat-card-content>
+    </mat-card>
+
+    <mat-card class="summary-card">
+      <mat-card-content>
+        <div class="summary-title">Total Debt</div>
+        <div class="summary-amount negative">${{totalDebt | number:'1.2-2'}}</div>
+      </mat-card-content>
+    </mat-card>
+
+    <mat-card class="summary-card">
+      <mat-card-content>
+        <div class="summary-title">Net Worth</div>
+        <div class="summary-amount" [ngClass]="netWorth >= 0 ? 'positive' : 'negative'">
+          ${{netWorth | number:'1.2-2'}}
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+
+  <form [formGroup]="filterForm" class="filter-container">
+    <mat-form-field appearance="outline">
+      <mat-label>Account Type</mat-label>
+      <mat-select formControlName="type">
+        <mat-option value="">All Types</mat-option>
+        <mat-option *ngFor="let type of accountTypes" [value]="type.value">
+          {{ type.label }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Account Category</mat-label>
+      <mat-select formControlName="isDebt">
+        <mat-option value="">All Categories</mat-option>
+        <mat-option [value]="'false'">Assets</mat-option>
+        <mat-option [value]="'true'">Debts</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </form>
+
+  <mat-progress-spinner *ngIf="loading" mode="indeterminate" diameter="50"></mat-progress-spinner>
+
+  <mat-card *ngIf="errorMessage" class="error-card">
+    <mat-card-content>{{ errorMessage }}</mat-card-content>
+  </mat-card>
+
+  <div class="mat-elevation-z8" *ngIf="!loading && !errorMessage">
+    <table mat-table [dataSource]="dataSource" matSort>
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Account Name </th>
+        <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+      </ng-container>
+  
+      <ng-container matColumnDef="type">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Type </th>
+        <td mat-cell *matCellDef="let element"> {{getAccountTypeLabel(element.type)}} </td>
+      </ng-container>
+  
+      <ng-container matColumnDef="balance">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Balance </th>
+        <td mat-cell *matCellDef="let element" [ngClass]="element.isDebt ? 'negative-balance' : 'positive-balance'"> 
+          ${{element.balance | number:'1.2-2'}} 
+          <span *ngIf="element.interestRate" class="interest-rate">
+            ({{element.interestRate}}% interest)
+          </span>
+        </td>
+      </ng-container>
+      
+      <ng-container matColumnDef="isDebt">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Category </th>
+        <td mat-cell *matCellDef="let element"> 
+          <span class="category-badge" [ngClass]="element.isDebt ? 'debt-badge' : 'asset-badge'">
+            {{element.isDebt ? 'Debt' : 'Asset'}}
+          </span>
+        </td>
+      </ng-container>
+  
+      <ng-container matColumnDef="dueDate">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Due Date </th>
+        <td mat-cell *matCellDef="let element"> 
+          <span *ngIf="element.dueDate">
+            {{element.dueDate | date:'mediumDate'}}
+            <span class="days-until" *ngIf="getDaysUntilDue(element.dueDate) !== null">
+              ({{getDaysUntilDue(element.dueDate)}} days)
+            </span>
+          </span>
+          <span *ngIf="!element.dueDate">N/A</span>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef> Actions </th>
+        <td mat-cell *matCellDef="let element">
+          <button mat-stroked-button color="primary" matTooltip="Edit Account" (click)="editAccount(element)">
+            <mat-icon>edit</mat-icon>
+          </button>
+          <button mat-stroked-button color="warn" matTooltip="Delete Account" (click)="deleteAccount(element._id)">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </td>
+      </ng-container>
+  
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  
+    <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of accounts"></mat-paginator>
+  </div>
+</div>

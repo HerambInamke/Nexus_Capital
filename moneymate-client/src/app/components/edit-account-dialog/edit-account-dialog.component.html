@@ -1,0 +1,119 @@
+<mat-card class="account-form">
+  <mat-card-content>
+    <h2>Edit Account</h2>
+    <form [formGroup]="accountForm">
+      <mat-form-field appearance="fill" class="full-width">
+        <mat-label>Account Name</mat-label>
+        <input matInput 
+               formControlName="name" 
+               placeholder="Enter account name">
+        <mat-error *ngIf="accountForm.get('name')?.hasError('required')">
+          Name is required
+        </mat-error>
+        <mat-error *ngIf="accountForm.get('name')?.hasError('minlength')">
+          Name must be at least 3 characters
+        </mat-error>
+        <mat-error *ngIf="accountForm.get('name')?.hasError('maxlength')">
+          Name cannot exceed 50 characters
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" class="full-width">
+        <mat-label>Account Type</mat-label>
+        <mat-select formControlName="type">
+          <mat-option *ngFor="let type of accountTypes" [value]="type.value">
+            {{type.label}}
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="accountForm.get('type')?.invalid">
+          Please select an account type
+        </mat-error>
+      </mat-form-field>
+
+      <div class="toggle-section">
+        <mat-slide-toggle formControlName="isDebt">This is a debt/liability</mat-slide-toggle>
+      </div>
+
+      <mat-form-field appearance="fill" class="full-width">
+        <mat-label>Balance</mat-label>
+        <input matInput 
+               type="number" 
+               formControlName="balance" 
+               placeholder="Enter balance amount">
+        <mat-error *ngIf="accountForm.get('balance')?.hasError('required')">
+          Balance is required
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" class="full-width">
+        <mat-label>Currency</mat-label>
+        <mat-select formControlName="currency">
+          <mat-option *ngFor="let currency of currencies" [value]="currency.value">
+            {{currency.label}}
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="accountForm.get('currency')?.invalid">
+          Please select a currency
+        </mat-error>
+      </mat-form-field>
+
+      <!-- Conditional fields for credit cards and debts -->
+      <ng-container *ngIf="accountForm.get('type')?.value === 'credit' || accountForm.get('isDebt')?.value">
+        <mat-form-field appearance="fill" class="full-width">
+          <mat-label>Interest Rate (%)</mat-label>
+          <input matInput 
+                 type="number" 
+                 formControlName="interestRate" 
+                 placeholder="Enter interest rate">
+          <mat-error *ngIf="accountForm.get('interestRate')?.hasError('min') || accountForm.get('interestRate')?.hasError('max')">
+            Interest rate must be between 0 and 100
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" class="full-width">
+          <mat-label>Due Date</mat-label>
+          <input matInput 
+                 [matDatepicker]="picker" 
+                 formControlName="dueDate"
+                 placeholder="Choose a due date">
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" class="full-width">
+          <mat-label>Minimum Payment</mat-label>
+          <input matInput 
+                 type="number" 
+                 formControlName="minimumPayment" 
+                 placeholder="Enter minimum payment">
+          <mat-error *ngIf="accountForm.get('minimumPayment')?.hasError('min')">
+            Minimum payment cannot be negative
+          </mat-error>
+        </mat-form-field>
+      </ng-container>
+
+      <!-- Credit limit for credit cards -->
+      <ng-container *ngIf="accountForm.get('type')?.value === 'credit'">
+        <mat-form-field appearance="fill" class="full-width">
+          <mat-label>Credit Limit</mat-label>
+          <input matInput 
+                 type="number" 
+                 formControlName="creditLimit" 
+                 placeholder="Enter credit limit">
+          <mat-error *ngIf="accountForm.get('creditLimit')?.hasError('min')">
+            Credit limit cannot be negative
+          </mat-error>
+        </mat-form-field>
+      </ng-container>
+    </form>
+    <mat-card-actions>
+      <button mat-raised-button 
+              color="primary" 
+              type="button" 
+              (click)="onSubmit()"
+              [disabled]="accountForm.invalid">
+        Update Account
+      </button>
+    </mat-card-actions>
+  </mat-card-content>
+</mat-card>

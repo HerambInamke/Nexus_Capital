@@ -1,0 +1,25 @@
+.budget-form {
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.full-width {
+  width: 100%;
+  margin-bottom: 15px;
+}
+
+.alerts-section {
+  margin: 20px 0;
+}
+
+h2 {
+  margin-top: 0;
+  color: #333;
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+}
+
+mat-card-actions {
+  display: flex;
+  justify-content: flex-end;
+}
