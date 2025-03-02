@@ -8,6 +8,9 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatDividerModule } from '@angular/material/divider';
 import { Transaction } from '../../models/transaction.model';
 import { TransactionService } from '../../services/transaction.service';
+import { AccountsTrendsComponent } from '../accounts-trends/accounts-trends.component';
+import { BudgetTrendsComponent } from '../budget-trends/budget-trends.component';
+import { SavingsTrendsComponent } from '../savings-trends/savings-trends.component';
 
 @Component({
   selector: 'app-finances-trends',
@@ -17,7 +20,10 @@ import { TransactionService } from '../../services/transaction.service';
     MatButtonToggleModule,
     MatCardModule,
     MatIconModule,
-    MatDividerModule
+    MatDividerModule,
+    AccountsTrendsComponent,
+    BudgetTrendsComponent,
+    SavingsTrendsComponent
   ],
   templateUrl: './finances-trends.component.html',
   styleUrls: ['./finances-trends.component.css']

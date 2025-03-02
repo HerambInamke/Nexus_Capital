@@ -8,6 +8,18 @@
     </button>
   </div>
 
+  <!-- Danger bar for alerts -->
+  <div *ngIf="alertBudgets.length > 0" class="alert-bar" style="margin-bottom: 50px;">
+    <mat-card class="alert-card" color="warn">
+      <mat-card-content>
+        <strong>Alert:</strong> The following budgets are exceeding their limits:
+        <ul>
+          <li *ngFor="let budget of alertBudgets">{{ budget.category }}: ${{ budget.spent }} / ${{ budget.amount }}</li>
+        </ul>
+      </mat-card-content>
+    </mat-card>
+  </div>
+
   <form [formGroup]="filterForm" class="filter-container">
     <mat-form-field appearance="outline">
       <mat-label>Select Category</mat-label>
@@ -52,33 +64,12 @@
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Spent </th>
         <td mat-cell *matCellDef="let element"> ${{element.spent | number:'1.2-2'}} </td>
       </ng-container>
-      
-      <ng-container matColumnDef="progress">
-        <th mat-header-cell *matHeaderCellDef> Progress </th>
-        <td mat-cell *matCellDef="let element">
-          <div class="progress-bar-container">
-            <div class="progress-bar" 
-                 [style.width.%]="getProgressPercentage(element)"
-                 [style.background-color]="getProgressColor(element)">
-            </div>
-            <span class="progress-text">{{getProgressPercentage(element) | number:'1.0-0'}}%</span>
-          </div>
-        </td>
-      </ng-container>
   
       <ng-container matColumnDef="period">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Period </th>
-        <td mat-cell *matCellDef="let element"> {{element.period | titlecase}} </td>
+        <td mat-cell *matCellDef="let budget"> {{ budget.period }} </td>
       </ng-container>
       
-      <ng-container matColumnDef="alerts">
-        <th mat-header-cell *matHeaderCellDef> Alerts </th>
-        <td mat-cell *matCellDef="let element">
-          <mat-icon *ngIf="element.alerts" color="primary">notifications_active</mat-icon>
-          <mat-icon *ngIf="!element.alerts" color="disabled">notifications_off</mat-icon>
-        </td>
-      </ng-container>
-
       <ng-container matColumnDef="actions">
         <th mat-header-cell *matHeaderCellDef> Actions </th>
         <td mat-cell *matCellDef="let element">
@@ -92,7 +83,7 @@
       </ng-container>
   
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;" [ngClass]="{'alert-row': row.spent > row.amount}"></tr>
     </table>
   
     <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of budgets"></mat-paginator>

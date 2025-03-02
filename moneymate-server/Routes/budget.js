@@ -5,7 +5,7 @@ const router = express.Router();
 
 router.post('/add-budget', async (req, res) => {
     const { email, category, amount, spent, period, startDate, endDate, alerts, alertThreshold } = req.body;
-    if(!email){
+    if (!email) {
         return res.status(400).json({ message: 'Please login first' });
     }
 
@@ -14,7 +14,7 @@ router.post('/add-budget', async (req, res) => {
             category, 
             amount, 
             spent: spent || 0, 
-            period, 
+            period,
             startDate, 
             endDate, 
             alerts, 

@@ -1,0 +1,21 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>Savings Trends</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <div class="stats">
+      <p>Total Target Savings: ${{ totalTarget | number:'1.2-2' }}</p>
+      <p>Total Saved: ${{ totalSaved | number:'1.2-2' }}</p>
+      <p>Remaining Savings Goal: ${{ (totalTarget - totalSaved) | number:'1.2-2' }}</p>
+    </div>
+    
+    <div class="charts-container">
+      <div class="chart">
+        <canvas #savingsProgressChart></canvas>
+      </div>
+      <div class="chart">
+        <canvas #savingsTargetChart></canvas>
+      </div>
+    </div>
+  </mat-card-content>
+</mat-card> 

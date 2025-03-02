@@ -36,10 +36,11 @@ import { EditBudgetDialogComponent } from '../edit-budget-dialog/edit-budget-dia
   styleUrls: ['./budget.component.css']
 })
 export class BudgetComponent implements OnInit {
-  displayedColumns: string[] = ['category', 'amount', 'spent', 'progress', 'period', 'alerts', 'actions'];
+  displayedColumns: string[] = ['category', 'amount', 'spent', 'period', 'actions'];
   dataSource!: MatTableDataSource<Budget>;
   loading = false;
   errorMessage = '';
+  alertBudgets: Budget[] = [];
 
   filterForm = new FormGroup({
     category: new FormControl(''),
@@ -82,6 +83,7 @@ export class BudgetComponent implements OnInit {
           this.dataSource = new MatTableDataSource(budgets);
           this.dataSource.paginator = this.paginator;
           this.dataSource.sort = this.sort;
+          this.checkForAlerts(budgets);
           this.loading = false;
         },
         error: (error) => {
@@ -181,5 +183,9 @@ export class BudgetComponent implements OnInit {
           }
         });
     }
+  }
+
+  checkForAlerts(budgets: Budget[]) {
+    this.alertBudgets = budgets.filter(budget => budget.spent > budget.amount);
   }
 }

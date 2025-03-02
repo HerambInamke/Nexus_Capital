@@ -7,7 +7,8 @@ import { catchError } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class AuthService {
-  private apiUrl = 'https://moneymate-oy6p.onrender.com/api/auth'; 
+  // private apiUrl = 'https://moneymate-oy6p.onrender.com/api/auth'; 
+  private apiUrl = 'http://localhost:5000/api/auth';
 
   constructor(private http: HttpClient) { }
 

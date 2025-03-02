@@ -8,7 +8,9 @@ import { Budget } from '../models/budget.model';
   providedIn: 'root'
 })
 export class BudgetService {
-  private apiUrl = `https://moneymate-oy6p.onrender.com/api/budget`;
+  // private apiUrl = `https://moneymate-oy6p.onrender.com/api/budget`;
+  private apiUrl = 'http://localhost:5000/api/budget';
+
 
   constructor(private http: HttpClient) {}
 

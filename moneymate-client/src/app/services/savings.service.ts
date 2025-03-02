@@ -8,7 +8,9 @@ import { SavingsGoal } from '../models/savings.model';
   providedIn: 'root'
 })
 export class SavingsService {
-  private apiUrl = `https://moneymate-oy6p.onrender.com/api/savings`;
+  // private apiUrl = `https://moneymate-oy6p.onrender.com/api/savings`;
+  private apiUrl = 'http://localhost:5000/api/savings';
+
 
   constructor(private http: HttpClient) {}
 

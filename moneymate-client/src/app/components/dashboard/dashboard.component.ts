@@ -45,6 +45,7 @@ export class DashboardComponent implements OnInit {
 
   filterForm = new FormGroup({
     category: new FormControl(''),
+    amount: new FormControl(''),
     dateRange: new FormControl('')
   });
 
@@ -105,6 +106,13 @@ export class DashboardComponent implements OnInit {
     if (selectedCategory) {
       filteredData = filteredData.filter(transaction =>
         transaction.category === selectedCategory
+      );
+    }
+
+    const enteredAmount = this.filterForm.get('amount')?.value;
+    if (enteredAmount) {
+      filteredData = filteredData.filter(transaction =>
+        transaction.amount <= Number(enteredAmount)
       );
     }
   

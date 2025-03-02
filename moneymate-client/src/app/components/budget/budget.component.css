@@ -2,6 +2,10 @@
   padding: 20px 158px;
 }
 
+.alert-row {
+  color: red;
+}
+
 .header-section {
   display: flex;
   justify-content: space-between;
@@ -61,4 +65,12 @@
 .error-card {
   margin-top: 20px;
   color: red;
+}
+
+.alert-bar {
+    background-color: #ffcccb; /* Light red background */
+    color: #d8000c; /* Dark red text */
+    padding: 10px;
+    border-radius: 5px;
+    margin: 10px 0;
 }

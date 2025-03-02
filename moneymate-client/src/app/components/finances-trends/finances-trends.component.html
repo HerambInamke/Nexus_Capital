@@ -1,4 +1,5 @@
-<mat-card class="category-analysis-container">
+<div class="finances-container">
+  <mat-card class="category-analysis-container">
     <mat-card-header>
       <mat-card-title>Spending Category Analysis</mat-card-title>
     </mat-card-header>
@@ -46,3 +47,19 @@
       </mat-card>
     </div>
   </mat-card>
+
+  <!-- Add AccountsTrendsComponent -->
+   <div style="margin-top: 100px; padding: 0 330px;">
+     <app-accounts-trends></app-accounts-trends>
+   </div>
+
+  <!-- Add BudgetTrendsComponent -->
+  <div style="margin-top: 100px; padding: 0 330px;">
+    <app-budget-trends></app-budget-trends>
+  </div>
+
+  <!-- Add SavingsTrendsComponent -->
+  <div style="margin-top: 100px; padding: 0 330px;">
+    <app-savings-trends></app-savings-trends>
+  </div>
+</div>

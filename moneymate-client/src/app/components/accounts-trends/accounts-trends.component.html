@@ -1,0 +1,24 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>Account Trends</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <div class="stats">
+      <p>Total Assets: ${{ totalAssets | number:'1.2-2' }}</p>
+      <p>Total Debts: ${{ totalDebts | number:'1.2-2' }}</p>
+      <p>Net Worth: ${{ (totalAssets - totalDebts) | number:'1.2-2' }}</p>
+    </div>
+    
+    <div class="charts-container">
+      <div class="chart">
+        <canvas #accountsChart></canvas>
+      </div>
+      <div class="chart">
+        <canvas #accountTypeChart></canvas>
+      </div>
+      <div class="chart">
+        <canvas #debtFulfillmentChart></canvas>
+      </div>
+    </div>
+  </mat-card-content>
+</mat-card> 

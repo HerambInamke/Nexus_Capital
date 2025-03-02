@@ -1,5 +1,5 @@
 <mat-card class="account-form">
-  <mat-card-content>
+  <mat-card-content style="max-height: 900px; overflow-y: auto;">
     <h2>Add New Account</h2>
     <form [formGroup]="accountForm">
       <mat-form-field appearance="fill" class="full-width">
@@ -106,14 +106,14 @@
         </mat-form-field>
       </ng-container>
     </form>
-    <mat-card-actions>
-      <button mat-raised-button 
-              color="primary" 
-              type="button" 
-              (click)="onSubmit()"
-              [disabled]="accountForm.invalid">
-        Add Account
-      </button>
-    </mat-card-actions>
   </mat-card-content>
+  <mat-card-actions>
+    <button mat-raised-button 
+            color="primary" 
+            type="button" 
+            (click)="onSubmit()"
+            [disabled]="accountForm.invalid">
+      Add Account
+    </button>
+  </mat-card-actions>
 </mat-card>

@@ -1,17 +1,40 @@
 const express = require('express');
 const Transaction = require('../Models/TransactionModel');
+const Budget = require('../Models/BudgetModel');
 const User = require('../Models/UserModel'); 
 const router = express.Router();
 
 router.post('/add-transaction', async (req, res) => {
     const { email, category, amount, description, date } = req.body;
-    if(!email){
+    if (!email) {
         return res.status(400).json({ message: 'Please login first' });
     }
 
     try {
         const newEntry = new Transaction({ category, amount, description, date });
         const savedEntry = await newEntry.save();
+
+        // Fetch all budgets for the given category
+        const budgets = await Budget.find({ category: category });
+
+        // Convert transaction date to Date object
+        const transactionDate = new Date(date);
+
+        // Loop through each budget and check if the transaction date is within the budget period
+        for (const budget of budgets) {
+            const budgetStartDate = new Date(budget.startDate);
+            const budgetEndDate = new Date(budget.endDate);
+
+            // Check if the transaction date is within the budget period
+            if (transactionDate >= budgetStartDate && transactionDate <= budgetEndDate) {
+                // Update the spent amount for this budget
+                await Budget.findByIdAndUpdate(
+                    budget._id,
+                    { $inc: { spent: amount } },
+                    { new: true }
+                );
+            }
+        }
 
         const user = await User.findOneAndUpdate(
             { email },

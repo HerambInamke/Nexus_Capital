@@ -1,0 +1,24 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>Budget Trends</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <div class="stats">
+      <p>Total Budgeted: ${{ totalBudgeted | number:'1.2-2' }}</p>
+      <p>Total Spent: ${{ totalSpent | number:'1.2-2' }}</p>
+      <p>Remaining Budget: ${{ (totalBudgeted - totalSpent) | number:'1.2-2' }}</p>
+    </div>
+    
+    <div class="charts-container">
+      <div class="chart">
+        <canvas #budgetChart></canvas>
+      </div>
+      <div class="chart">
+        <canvas #categoryChart></canvas>
+      </div>
+      <div class="chart">
+        <canvas #budgetCrossingChart></canvas>
+      </div>
+    </div>
+  </mat-card-content>
+</mat-card> 
