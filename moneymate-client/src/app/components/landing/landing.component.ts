@@ -73,4 +73,16 @@ export class LandingComponent {
   navigateToRegister() {
     this.router.navigate(['/register']);
   }
+
+
+  isLoggedIn(): boolean {
+    if(localStorage.getItem('email')){
+      return true;
+    };
+    return false;
+  }
+
+  navigateToDashboard() {
+    this.router.navigate(['/dashboard']);
+  }
 }

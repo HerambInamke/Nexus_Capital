@@ -5,11 +5,14 @@
       <h1 class="hero-title">Take Control of Your Financial Future</h1>
       <p class="hero-subtitle">Nexus Capital provides powerful tools to track expenses, manage budgets, and achieve your financial goals.</p>
       <div class="cta-buttons">
-        <button mat-raised-button color="primary" class="cta-button login-btn" (click)="navigateToLogin()">
+        <button *ngIf="!isLoggedIn()" mat-raised-button color="primary" class="cta-button login-btn" (click)="navigateToLogin()">
           <mat-icon>login</mat-icon> Log In
         </button>
-        <button mat-raised-button class="cta-button signup-btn" (click)="navigateToRegister()">
+        <button *ngIf="!isLoggedIn()" mat-raised-button class="cta-button signup-btn" (click)="navigateToRegister()">
           <mat-icon>person_add</mat-icon> Sign Up
+        </button>
+        <button *ngIf="isLoggedIn()" mat-raised-button color="primary" class="cta-button login-btn" (click)="navigateToDashboard()">
+          <mat-icon>dashboard</mat-icon> Dashboard
         </button>
       </div>
     </div>
@@ -63,7 +66,7 @@
           <p class="testimonial-text">"{{testimonial.content}}"</p>
           <div class="testimonial-author">
             <img [src]="testimonial.avatar" alt="{{testimonial.name}}" class="testimonial-avatar" 
-                 onerror="this.src='https://ui-avatars.com/api/?name={{testimonial.name}}&background=random'">
+                 (error)="testimonial.avatar = 'https://ui-avatars.com/api/?name=' + testimonial.name + '&background=random'">
             <div class="testimonial-info">
               <h4 class="testimonial-name">{{testimonial.name}}</h4>
               <p class="testimonial-role">{{testimonial.role}}</p>
