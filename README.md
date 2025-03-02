@@ -1,6 +1,8 @@
 # Nexus Capital - Finance Management Platform
 
 ![Nexus Capital Logo](moneymate-client/src/assets/nexus_capital_logo.png)
+![WorkFlow](moneymate-client/src/assets/Structure.png)
+![Logic](moneymate-client/src/assets/Screenshot%202025-03-02%20173910.png)
 
 ## Overview
 
