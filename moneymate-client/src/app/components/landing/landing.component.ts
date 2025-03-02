@@ -5,6 +5,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatCardModule } from '@angular/material/card';
 import { MatDividerModule } from '@angular/material/divider';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 @Component({
   selector: 'app-landing',
@@ -14,12 +15,15 @@ import { MatDividerModule } from '@angular/material/divider';
     MatButtonModule,
     MatIconModule,
     MatCardModule,
-    MatDividerModule
+    MatDividerModule,
+    MatTooltipModule
   ],
   templateUrl: './landing.component.html',
   styleUrls: ['./landing.component.css']
 })
 export class LandingComponent {
+  isDarkMode = false;
+  
   features = [
     {
       icon: 'account_balance_wallet',
@@ -64,7 +68,18 @@ export class LandingComponent {
     }
   ];
 
-  constructor(private router: Router) {}
+  constructor(private router: Router) {
+    // Check if user has a theme preference stored
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme === 'dark') {
+      this.isDarkMode = true;
+    }
+  }
+
+  toggleTheme() {
+    this.isDarkMode = !this.isDarkMode;
+    localStorage.setItem('theme', this.isDarkMode ? 'dark' : 'light');
+  }
 
   navigateToLogin() {
     this.router.navigate(['/login']);
@@ -73,7 +88,6 @@ export class LandingComponent {
   navigateToRegister() {
     this.router.navigate(['/register']);
   }
-
 
   isLoggedIn(): boolean {
     if(localStorage.getItem('email')){

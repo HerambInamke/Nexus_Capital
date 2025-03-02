@@ -14,6 +14,105 @@
   --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+/* Dark Mode Styles */
+.landing-container.dark-mode {
+  --primary: #00a8a8; /* Teal becomes primary in dark mode */
+  --secondary: #0a3d62; /* Navy becomes secondary */
+  --accent: #00d2d3; /* Keep accent */
+  --light: #121212; /* Dark background */
+  --dark: #f7fafc; /* Light text */
+  color: var(--dark);
+  background-color: var(--light);
+}
+
+.dark-mode .hero-section {
+  background: linear-gradient(135deg, #121212 0%, #1e2a38 100%);
+}
+
+.dark-mode .features-section,
+.dark-mode .testimonials-section {
+  background-color: #1a1a1a;
+}
+
+.dark-mode .how-it-works-section {
+  background-color: #121212;
+}
+
+.dark-mode .feature-card,
+.dark-mode .testimonial-card {
+  background-color: #2a2a2a;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.dark-mode .feature-title,
+.dark-mode .step-title,
+.dark-mode .testimonial-name,
+.dark-mode .section-title,
+.dark-mode .hero-title {
+  color: var(--dark);
+}
+
+.dark-mode .feature-description,
+.dark-mode .step-description,
+.dark-mode .testimonial-text,
+.dark-mode .hero-subtitle {
+  color: rgba(247, 250, 252, 0.8);
+}
+
+.dark-mode .final-cta-section {
+  background: linear-gradient(135deg, #00a8a8 0%, #007a7a 100%);
+}
+
+.dark-mode .landing-footer {
+  background-color: #0a0a0a;
+}
+
+/* Theme Toggle */
+.theme-toggle {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 1000;
+  background-color: var(--primary);
+  color: white;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--shadow-md);
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.theme-toggle:hover {
+  transform: scale(1.1);
+}
+
+.dark-mode .theme-toggle {
+  background-color: var(--accent);
+}
+
+/* Logo Styles */
+.logo-container {
+  margin-bottom: 24px;
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  height: 80px;
+  width: auto;
+  margin-right: 16px;
+}
+
+.footer-logo-img {
+  height: 60px;
+  width: auto;
+  margin-bottom: 16px;
+}
+
 /* Hero Section */
 .hero-section {
   display: flex;
@@ -109,6 +208,10 @@
   box-shadow: var(--shadow-md);
 }
 
+.dark-mode .login-btn:hover {
+  background-color: #00c2c2 !important;
+}
+
 .signup-btn {
   background-color: transparent !important;
   color: var(--primary);
@@ -135,6 +238,15 @@
   box-shadow: var(--shadow-md);
 }
 
+.dark-mode .signup-btn {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
+.dark-mode .signup-btn:hover {
+  background-color: rgba(0, 210, 211, 0.1) !important;
+}
+
 .signup-btn:hover::before {
   left: 0;
 }
@@ -153,6 +265,10 @@
   height: auto;
   filter: drop-shadow(0 20px 30px rgba(10, 61, 98, 0.15));
   animation: float 6s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+.dark-mode .hero-img {
+  filter: drop-shadow(0 20px 30px rgba(0, 168, 168, 0.15)) brightness(0.8);
 }
 
 @keyframes float {
@@ -743,6 +859,18 @@
   background: rgba(10, 61, 98, 0.4);
 }
 
+.dark-mode ::-webkit-scrollbar-track {
+  background: #2a2a2a;
+}
+
+.dark-mode ::-webkit-scrollbar-thumb {
+  background: rgba(0, 168, 168, 0.3);
+}
+
+.dark-mode ::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 168, 168, 0.5);
+}
+
 /* Animation Utilities */
 .fade-in {
   animation: fadeIn 0.6s ease-out forwards;
@@ -809,6 +937,10 @@
   .hero-content {
     max-width: 100%;
     margin-bottom: 60px;
+  }
+
+  .logo-container {
+    justify-content: center;
   }
 
   .cta-buttons {

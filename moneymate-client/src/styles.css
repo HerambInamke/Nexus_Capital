@@ -1,3 +1,103 @@
+/* Global styles */
+html, body { 
+  height: 100%; 
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+/* Light theme (default) */
+:root {
+  --primary-color: #0a3d62;
+  --secondary-color: #00a8a8;
+  --accent-color: #00d2d3;
+  --background-color: #f7fafc;
+  --card-background: #ffffff;
+  --text-color: #1a2b3c;
+  --text-secondary: #435e72;
+  --border-color: rgba(10, 61, 98, 0.1);
+  --shadow-color: rgba(10, 61, 98, 0.1);
+}
+
+/* Dark theme */
+body.dark-theme {
+  --primary-color: #00a8a8;
+  --secondary-color: #0a3d62;
+  --accent-color: #00d2d3;
+  --background-color: #121212;
+  --card-background: #1e1e1e;
+  --text-color: #f7fafc;
+  --text-secondary: #b0bec5;
+  --border-color: rgba(255, 255, 255, 0.1);
+  --shadow-color: rgba(0, 0, 0, 0.3);
+}
+
+body {
+  background-color: var(--background-color);
+  color: var(--text-color);
+}
+
+/* Material overrides for dark theme */
+body.dark-theme .mat-mdc-card {
+  background-color: var(--card-background);
+  color: var(--text-color);
+}
+
+body.dark-theme .mat-toolbar.mat-primary {
+  background-color: #1a1a1a;
+  color: var(--text-color);
+}
+
+body.dark-theme .mat-mdc-raised-button.mat-primary {
+  background-color: var(--primary-color);
+}
+
+body.dark-theme .mat-mdc-form-field-label {
+  color: var(--text-secondary);
+}
+
+body.dark-theme .mat-mdc-input-element {
+  color: var(--text-color);
+}
+
+body.dark-theme .mat-mdc-table {
+  background-color: var(--card-background);
+  color: var(--text-color);
+}
+
+body.dark-theme .mat-mdc-cell,
+body.dark-theme .mat-mdc-header-cell {
+  color: var(--text-color);
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(10, 61, 98, 0.2);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(10, 61, 98, 0.4);
+}
+
+body.dark-theme ::-webkit-scrollbar-track {
+  background: #2a2a2a;
+}
+
+body.dark-theme ::-webkit-scrollbar-thumb {
+  background: rgba(0, 168, 168, 0.3);
+}
+
+body.dark-theme ::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 168, 168, 0.5);
+}

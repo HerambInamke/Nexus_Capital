@@ -1,7 +1,7 @@
-<mat-toolbar color="primary" class="enhanced-navbar">
+<mat-toolbar color="primary" class="enhanced-navbar" [ngClass]="{'dark-mode': isDarkMode}">
     <div class="navbar-container">
       <div class="logo-section">
-        <img src="/assets/logo.png" alt="AI Journal Logo" class="app-logo" onerror="this.style.display='none'">
+        <img src="assets/nexus_capital_logo.png" alt="Nexus Capital Logo" class="app-logo" onerror="this.style.display='none'">
         <span class="app-title">Nexus Capital</span>
       </div>
       
@@ -69,6 +69,14 @@
             Logout
           </button>
         </ng-container>
+
+        <!-- Theme toggle -->
+        <button mat-icon-button 
+                (click)="toggleTheme()" 
+                class="theme-toggle-btn"
+                [matTooltip]="isDarkMode ? 'Switch to Light Mode' : 'Switch to Dark Mode'">
+          <mat-icon>{{ isDarkMode ? 'light_mode' : 'dark_mode' }}</mat-icon>
+        </button>
       </nav>
     </div>
   </mat-toolbar>

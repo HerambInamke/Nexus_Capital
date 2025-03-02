@@ -19,6 +19,12 @@ export class AppComponent implements OnInit {
   constructor(private router: Router, private activatedRoute: ActivatedRoute) {}
 
   ngOnInit() {
+    // Check for theme preference
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme === 'dark') {
+      document.body.classList.add('dark-theme');
+    }
+    
     this.router.events.subscribe(event => {
       if (event instanceof NavigationEnd) {
         const currentRoute = this.activatedRoute.snapshot.firstChild?.routeConfig?.path;

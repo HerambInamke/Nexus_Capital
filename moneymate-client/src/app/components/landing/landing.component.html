@@ -1,7 +1,10 @@
-<div class="landing-container">
+<div class="landing-container" [ngClass]="{'dark-mode': isDarkMode}">
   <!-- Hero Section -->
   <section class="hero-section">
     <div class="hero-content">
+      <div class="logo-container">
+        <img src="assets/nexus_capital_logo.png" alt="Nexus Capital Logo" class="logo">
+      </div>
       <h1 class="hero-title">Take Control of Your Financial Future</h1>
       <p class="hero-subtitle">Nexus Capital provides powerful tools to track expenses, manage budgets, and achieve your financial goals.</p>
       <div class="cta-buttons">
@@ -20,6 +23,13 @@
       <img src="assets/hero-finance.svg" alt="Financial Management Illustration" class="hero-img">
     </div>
   </section>
+
+  <!-- Theme Toggle -->
+  <div class="theme-toggle">
+    <button mat-icon-button (click)="toggleTheme()" [matTooltip]="isDarkMode ? 'Switch to Light Mode' : 'Switch to Dark Mode'">
+      <mat-icon>{{ isDarkMode ? 'light_mode' : 'dark_mode' }}</mat-icon>
+    </button>
+  </div>
 
   <!-- Features Section -->
   <section class="features-section">
@@ -92,7 +102,7 @@
   <footer class="landing-footer">
     <div class="footer-content">
       <div class="footer-logo">
-        <h3>Nexus Capital</h3>
+        <img src="assets/nexus_capital_logo.png" alt="Nexus Capital Logo" class="footer-logo-img">
         <p>Your financial journey, simplified.</p>
       </div>
       <div class="footer-links">
