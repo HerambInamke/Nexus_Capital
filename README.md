@@ -136,12 +136,7 @@ We welcome contributions to Nexus Capital! Please follow these steps:
 4. Push to the branch (`git push origin feature/amazing-feature`)
 5. Open a Pull Request
 
-## License
-
-This project is licensed under the MIT License - see the LICENSE file for details.
-
 ## Acknowledgments
 
-- Angular team for the amazing framework
-- MongoDB for the flexible database solution
-- All contributors who have helped improve this project
+-Ayush
+-Heramb
