@@ -8,8 +8,7 @@ import { Account } from '../models/account.model';
   providedIn: 'root'
 })
 export class AccountService {
-  // private apiUrl = `https://moneymate-oy6p.onrender.com/api/account`;
-  private apiUrl = 'http://localhost:5000/api/account';
+  private apiUrl = `http://localhost:5000/api/account`;
 
   constructor(private http: HttpClient) {}
 

@@ -1,0 +1,120 @@
+<div class="landing-container">
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <div class="hero-content">
+      <h1 class="hero-title">Take Control of Your Financial Future</h1>
+      <p class="hero-subtitle">Nexus Capital provides powerful tools to track expenses, manage budgets, and achieve your financial goals.</p>
+      <div class="cta-buttons">
+        <button mat-raised-button color="primary" class="cta-button login-btn" (click)="navigateToLogin()">
+          <mat-icon>login</mat-icon> Log In
+        </button>
+        <button mat-raised-button class="cta-button signup-btn" (click)="navigateToRegister()">
+          <mat-icon>person_add</mat-icon> Sign Up
+        </button>
+      </div>
+    </div>
+    <div class="hero-image">
+      <img src="assets/hero-finance.svg" alt="Financial Management Illustration" class="hero-img">
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section class="features-section">
+    <h2 class="section-title">Powerful Financial Tools</h2>
+    <div class="features-grid">
+      <mat-card class="feature-card" *ngFor="let feature of features">
+        <mat-icon class="feature-icon">{{feature.icon}}</mat-icon>
+        <h3 class="feature-title">{{feature.title}}</h3>
+        <p class="feature-description">{{feature.description}}</p>
+      </mat-card>
+    </div>
+  </section>
+
+  <!-- How It Works Section -->
+  <section class="how-it-works-section">
+    <h2 class="section-title">How Nexus Capital Works</h2>
+    <div class="steps-container">
+      <div class="step">
+        <div class="step-number">1</div>
+        <h3 class="step-title">Create Your Account</h3>
+        <p class="step-description">Sign up in minutes and connect your financial accounts securely.</p>
+      </div>
+      <div class="step-divider"></div>
+      <div class="step">
+        <div class="step-number">2</div>
+        <h3 class="step-title">Track Your Finances</h3>
+        <p class="step-description">Monitor expenses, set budgets, and track your savings goals.</p>
+      </div>
+      <div class="step-divider"></div>
+      <div class="step">
+        <div class="step-number">3</div>
+        <h3 class="step-title">Gain Financial Insights</h3>
+        <p class="step-description">Visualize your spending patterns and receive personalized recommendations.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials Section -->
+  <section class="testimonials-section">
+    <h2 class="section-title">What Our Users Say</h2>
+    <div class="testimonials-container">
+      <mat-card class="testimonial-card" *ngFor="let testimonial of testimonials">
+        <div class="testimonial-content">
+          <p class="testimonial-text">"{{testimonial.content}}"</p>
+          <div class="testimonial-author">
+            <img [src]="testimonial.avatar" alt="{{testimonial.name}}" class="testimonial-avatar" 
+                 onerror="this.src='https://ui-avatars.com/api/?name={{testimonial.name}}&background=random'">
+            <div class="testimonial-info">
+              <h4 class="testimonial-name">{{testimonial.name}}</h4>
+              <p class="testimonial-role">{{testimonial.role}}</p>
+            </div>
+          </div>
+        </div>
+      </mat-card>
+    </div>
+  </section>
+
+  <!-- Final CTA Section -->
+  <section class="final-cta-section">
+    <div class="final-cta-content">
+      <h2 class="final-cta-title">Ready to Transform Your Financial Life?</h2>
+      <p class="final-cta-subtitle">Join thousands of users who have already taken control of their finances with Nexus Capital.</p>
+      <button mat-raised-button color="primary" class="final-cta-button" (click)="navigateToRegister()">
+        Get Started Now
+      </button>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="landing-footer">
+    <div class="footer-content">
+      <div class="footer-logo">
+        <h3>Nexus Capital</h3>
+        <p>Your financial journey, simplified.</p>
+      </div>
+      <div class="footer-links">
+        <div class="footer-column">
+          <h4>Company</h4>
+          <a href="#">About Us</a>
+          <a href="#">Careers</a>
+          <a href="#">Press</a>
+        </div>
+        <div class="footer-column">
+          <h4>Resources</h4>
+          <a href="#">Blog</a>
+          <a href="#">Help Center</a>
+          <a href="#">Contact</a>
+        </div>
+        <div class="footer-column">
+          <h4>Legal</h4>
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Service</a>
+          <a href="#">Security</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 Nexus Capital. All rights reserved.</p>
+    </div>
+  </footer>
+</div>
