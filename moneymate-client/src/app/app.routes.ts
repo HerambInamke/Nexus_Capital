@@ -7,9 +7,10 @@ import { FinancesTrendsComponent } from './components/finances-trends/finances-t
 import { BudgetComponent } from './components/budget/budget.component';
 import { SavingsComponent } from './components/savings/savings.component';
 import { AccountsComponent } from './components/accounts/accounts.component';
+import { LandingComponent } from './components/landing/landing.component';
 
 export const routes: Routes = [
-    {path: '', redirectTo: 'login', pathMatch: 'full'},
+    {path: '', component: LandingComponent},
     {path: 'login', component: LoginComponent},
     {path: 'register', component: RegisterComponent},
     {path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard]},
