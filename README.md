@@ -1,12 +1,14 @@
 # Nexus Capital - Finance Management Platform
 
-# WebSite Link :- https://nexus-capital-frontend.vercel.app/
-# Frontend Link :- https://nexus-capital-frontend.vercel.app/
+# WebSite Link :- https://nexus-capital-git-main-herambs-projects-88ca3289.vercel.app/
+# Frontend Link :- https://nexus-capital-git-main-herambs-projects-88ca3289.vercel.app/
 # Backend Link :- https://nexus-capital.onrender.com/
 
 ![Nexus Capital Logo](moneymate-client/src/assets/nexus_capital_logo.png)
 ![WorkFlow](moneymate-client/src/assets/Structure.png)
 ![Logic](moneymate-client/src/assets/Screenshot%202025-03-02%20173910.png)
+![Dashboard](moneymate-client/src/assets/dashboard.png)
+![1st View](moneymate-client/src/assets/1st%20view.png)
 
 ## Overview
 
